@@ -18,7 +18,7 @@ const Reg = () => {
   const [valuePassword, setValuePassword] = useState('')
   const [valueUsername, setValueUsername] = useState('')
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const {
     register,
@@ -28,7 +28,7 @@ const Reg = () => {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data))
-    // navigate('/')
+    navigate('/')
   }
 
   const onBlur = (e, item) => {
