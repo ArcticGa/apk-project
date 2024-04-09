@@ -1,6 +1,6 @@
-const List = ({ data, title }) => {
+const ListChanges = ({ data, title }) => {
   return (
-    <>
+    <div className="mb-2">
       <div className="mb-1 leading-4">{title}</div>
       <ul className="ml-7">
         {data.map((item, i) => (
@@ -9,8 +9,8 @@ const List = ({ data, title }) => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 
-export default List
+export default ListChanges

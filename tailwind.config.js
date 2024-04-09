@@ -13,7 +13,7 @@ export default {
         pageColor: '#101011',
         blueGray: '#30303B',
         gray1: '#696975',
-        gray2: '#393E41',
+        gray2: '#232323',
         blue: '#72B6F1',
         green: '#44BBA4',
         elementsBlack: '#171718',
@@ -25,7 +25,13 @@ export default {
       width: {
         242: '242px',
         262: '262px',
+        520: '520px',
         654: '654px',
+        1110: '1110px',
+      },
+
+      padding: {
+        524: '524px',
       },
     },
   },
