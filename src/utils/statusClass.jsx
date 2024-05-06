@@ -4,4 +4,6 @@ export const statusClass = (status) => {
   if (status === 'tested') return 'bg-green'
   if (status === 'alert') return 'bg-redOrange'
   if (status === 'critical') return 'bg-yellow'
+
+  return 'bg-gray2'
 }

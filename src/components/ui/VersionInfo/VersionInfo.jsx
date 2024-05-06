@@ -6,8 +6,12 @@ import Info from './Info'
 import Comments from './Comments'
 import Apk from './Apk'
 import Bugs from './Bugs'
+import AddBug from './AddBug'
+import { useState } from 'react'
 
 const VersionInfo = () => {
+  const [openAddBug, setOpenAddBug] = useState(false)
+
   const { companyId, itemId, versionId } = useParams()
 
   const companyData = findData(companyId)
@@ -50,8 +54,16 @@ const VersionInfo = () => {
                 src={PlusIcon}
                 alt="PlusIcon"
                 className="cursor-pointer w-3 h-3"
+                onClick={() => setOpenAddBug(true)}
               />
             </div>
+
+            {openAddBug && (
+              <AddBug
+                setOpenAddBug={setOpenAddBug}
+                data={versionData?.bugsFoundCommit}
+              />
+            )}
 
             <Bugs data={versionData} />
           </div>

@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
-  const [openTeams, setOpenTeams] = useState(false)
+  const [openTeams, setOpenTeams] = useState(true)
 
   return (
     <div className="flex flex-col justify-between h-full w-242 py-6 px-2 font-anonymousPro border-r border-blueGray">
