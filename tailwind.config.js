@@ -10,6 +10,7 @@ export default {
       },
 
       colors: {
+        white: '#E0E0E0',
         pageColor: '#101011',
         blueGray: '#30303B',
         gray1: '#696975',

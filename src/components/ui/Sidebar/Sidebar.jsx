@@ -15,9 +15,9 @@ const Sidebar = () => {
         <div className="flex items-center justify-between px-4 mb-8">
           <Link to={'/'} className="flex items-center font-jetBrainsMono">
             <img src={LogoApp} alt="Logo" />
-            <div className="uppercase ml-4">pkg2box</div>
+            <div className="uppercase ml-4">Lunar: tracking</div>
           </Link>
-          <div className="text-gray1 font-normal text-sm">v0.0.1</div>
+          <div className="text-gray1 font-normal text-sm">v0.8.0</div>
         </div>
 
         <div className="flex justify-between items-center rounded text-gray1 mb-2 hover:bg-elementsBlack px-4 py-1 ">
@@ -32,7 +32,7 @@ const Sidebar = () => {
           </button>
 
           <img
-            className="w-4 h-4 cursor-pointer"
+            className="w-3 h-3 mr-0.5 cursor-pointer"
             src={PlusIcon}
             alt="PlusIcon"
           />

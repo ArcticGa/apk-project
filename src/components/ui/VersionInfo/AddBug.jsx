@@ -1,23 +1,8 @@
-// {
-//   idBugFoundCommit: 1,
-//   statusBug: 'alert',
-//   titleBug: 'При сканировании партстикера появляется ошибка',
-//   descriptionBug:
-//     'При сканировании партстикера “В ячейку” на странице “Размещение на транзитном складе” появляется ошибка 400 Bad Request',
-//   orderOfActionsBug: [
-//     'Заходим на страницу “Размещение на транзитном складе”',
-//     'Тапаем на кнопку “В ячейку”, открывается pop-up',
-//     'С помощью ТСД сканируем партстикер 121473224/1',
-//     'В  pop-up-е появляется текст ошибки “400 Bad Request”',
-//   ],
-//   foundBy: '@gross_franklin',
-// },
-
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { statusClass } from '../../../utils/statusClass'
 import DeleteIcon from '../../../assets/icons/DeleteIcon.svg'
 import PlusIcon from '../../../assets/icons/plusIcon.svg'
-import { v4 as uuidv4 } from 'uuid'
 
 const AddBug = ({ setOpenAddBug, data }) => {
   const [valueTitle, setValueTitle] = useState('Заголовок')
