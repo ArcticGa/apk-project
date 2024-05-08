@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { getFullDate } from '../../../utils/getFullDate'
 import PlusIcon from '../../../assets/icons/plusIcon.svg'
 import AddInputBlock from './AddInputBlock'
 
 const inputClass = 'border border-blueGray p-4 rounded-lg mt-2'
+const btnEnable = 'mr-4 bg-green text-white rounded py-2 px-6'
+const btnDisable = 'mr-4 bg-blueGray rounded py-2 px-6'
 
 const options = [
   { value: 1, label: 'release' },
@@ -17,6 +19,16 @@ const CreateItem = ({ setOpenPopup, data }) => {
   const [currentSelect, setCurrentSelect] = useState('release')
   const [bugsFixesArr, setBugFixesArr] = useState([])
   const [featuresCommits, setFeaturesCommits] = useState([])
+  const [file, setFile] = useState()
+  const [btnActive, setBtnActive] = useState(false)
+
+  useEffect(() => {
+    if (versionValue !== '') {
+      setBtnActive(true)
+    } else {
+      setBtnActive(false)
+    }
+  }, [versionValue])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -27,7 +39,7 @@ const CreateItem = ({ setOpenPopup, data }) => {
       statusCommit: currentSelect,
       dateCommit: getFullDate(),
       nameAdmin: '@medovarov',
-      apkNameLink: 'aboba.apk',
+      apkNameLink: file.name,
       bugFixesCommit: bugsFixesArr,
       bugsFoundCommit: [],
       featuresCommit: featuresCommits,
@@ -35,12 +47,15 @@ const CreateItem = ({ setOpenPopup, data }) => {
     }
 
     data.unshift(newItem)
-    console.log(data)
     setOpenPopup(false)
   }
 
   const handleSelect = (event) => {
     setCurrentSelect(event.target.value)
+  }
+
+  const handleFile = (event) => {
+    setFile(event.target.files[0])
   }
 
   return (
@@ -85,11 +100,14 @@ const CreateItem = ({ setOpenPopup, data }) => {
             <img className="cursor-pointer" src={PlusIcon} alt="PlusIcon" />
           </div>
 
-          <div>ТУТ ДОЛЖЕН БЫТЬ ФАЙЛ</div>
+          <input type="file" name="file" onChange={handleFile} />
         </div>
 
         <div className="flex items-center mt-8 font-bold">
-          <button className="mr-4 bg-blueGray rounded py-2 px-6">
+          <button
+            disabled={!btnActive}
+            className={!btnActive ? btnDisable : btnEnable}
+          >
             Создать
           </button>
           <div

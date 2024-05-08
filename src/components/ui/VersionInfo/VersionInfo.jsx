@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { findData } from '../../../utils/findData'
 import PlusIcon from '../../../assets/icons/plusIcon.svg'
 
@@ -12,11 +12,24 @@ import { useState } from 'react'
 const VersionInfo = () => {
   const [openAddBug, setOpenAddBug] = useState(false)
 
+  const navigate = useNavigate()
   const { companyId, itemId, versionId } = useParams()
 
   const companyData = findData(companyId)
   const itemData = findData(companyId, itemId)
   const versionData = findData(companyId, itemId, versionId)
+
+  const handleDeleteVersion = () => {
+    for (let i = itemData?.itemCommits.length; i--; ) {
+      if (
+        itemData?.itemCommits[i].versionCommit === versionData?.versionCommit
+      ) {
+        itemData?.itemCommits.splice(i, 1)
+      }
+    }
+
+    navigate(-1)
+  }
 
   return (
     <>
@@ -30,7 +43,10 @@ const VersionInfo = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <div className="px-4 py-2 border-2 border-redOrange rounded text-redOrange leading-4 cursor-pointer">
+          <div
+            className="px-4 py-2 border-2 border-redOrange rounded text-redOrange leading-4 cursor-pointer"
+            onClick={handleDeleteVersion}
+          >
             Удалить
           </div>
           <div className="px-4 py-2 ml-4 bg-green rounded leading-4 cursor-pointer">
